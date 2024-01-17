@@ -23,7 +23,10 @@ with open(fichero, 'r', encoding='UTF8') as archivo:
         print("Posición del cursor: ", pos)
         linea = archivo.readline()
 
-with open(fichero, "a+") as archivo_escritura:
+with open(fichero, "r") as archivo_lectura:
+    contenido = archivo_lectura.read()
+with open(fichero, "w") as archivo_escritura:
+    archivo_escritura.write(contenido)
     archivo_escritura.write("AaEeIiOoUu")
 
 with open(fichero, "a+") as archivo_anexar:
