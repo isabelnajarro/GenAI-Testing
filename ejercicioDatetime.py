@@ -19,6 +19,7 @@ def obtener_dia(num):
         5: "Sábado",
         6: "Domingo"
     }
+    return switch.get(num)
 
 print("Dia de la semana que naci, teniendo en cuenta que se empieza en 0: ", nacimiento.weekday())
 nombre_dia = obtener_dia(nacimiento.weekday())
