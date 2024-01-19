@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-FLORESDISPONIBLES = ["Amapola", "Margarita"]
+FLORESDISPONIBLES = ["AmapolaAzul", "RosaRosa", "Margarita"]
 
 class Flor(ABC):
     def __init__(self, nombre, tipo, horasSol, horasMaxSol):
@@ -15,19 +15,13 @@ class Flor(ABC):
     def darComida(self):
         pass
 
+    @abstractmethod
     def cambiarTierra(self):
         pass
 
     @staticmethod
     def isAvailable(tipo):
         return tipo in FLORESDISPONIBLES
-    
-    def __iter__(self):
-        self.horasSol = self.horasMaxSol - self.horasSol
-        return self
-    
-    def horasAlSolDisponibles():
-        return 
     
     def sumarHorasSol(self, horas):
         self.horasSol += horas
@@ -59,7 +53,6 @@ class Amapola(Flor):
     def cambiarTierra(self):
         return self.horasSol > 2
     
-    '''
     def is_en_temporada(self):
         fecha_actual = datetime.now()
         return fecha_actual < datetime.strptime(self.temporada, "%Y-%m-%d")
@@ -72,7 +65,6 @@ class Amapola(Flor):
             return f"Amapola {self.nombre} está en temporada."
         else:
             raise StopIteration(f"Amapola {self.nombre} no está en temporada.")
-    '''
 
 
 

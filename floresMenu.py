@@ -118,6 +118,27 @@ class FlorManager:
                 amapola.sumarHorasSol(horas)
             self.guardar_amapolas()
 
+    def mostrarFloresDisponibles(self):
+        print("Flores disponibles")
+        print("Rosas:")
+        iter_rosas = iter(self.rosas)
+        while True:
+            try:
+                rosa = next(iter_rosas)
+                print(f"{rosa.nombre}: {'Disponible' if rosa.isAvailable(rosa.nombre) else 'No Disponible'}")
+            except StopIteration:
+                break
+
+        print("\nAmapolas:")
+        iter_amapolas = iter(self.amapolas)
+        while True:
+            try:
+                amapola = next(iter_amapolas)
+                print(f"{amapola.nombre}: {'Disponible' if amapola.isAvailable(amapola.nombre) else 'No Disponible'}")
+            except StopIteration:
+                break
+
+
     def menu(self):
         while True:
             print("\nMenú:")
@@ -127,7 +148,8 @@ class FlorManager:
             print("4. Crear rosa")
             print("5. Crear amapola")
             print("6. Borrar flor")
-            print("7. Salir")
+            print("7. Flores disponibles")
+            print("8. Salir")
 
             opcion = input("Selecciona opción: ")
 
@@ -140,7 +162,7 @@ class FlorManager:
             elif opcion == "2":
                 opcion = input("Selecciona 1. Rosas o 2. Amapolas: ")
                 horas = input("¿Cuántas horas quieres ponerlas al sol?")
-                self.actualizarHorasSol(horas, opcion)
+                self.actualizarHorasSol(int(horas), opcion)
             elif opcion == "3":
                 self.actualizarBD()
             elif opcion == "4":
@@ -164,8 +186,9 @@ class FlorManager:
                     self.borrarRosa(nombre)
                 elif opcion == "2":
                     self.borrarAmapola(nombre)
-            elif opcion == "8":
             elif opcion == "7":
+                self.mostrarFloresDisponibles()
+            elif opcion == "8":
                 break
             
 
