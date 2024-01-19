@@ -1,4 +1,4 @@
-Nombre,Tipo,HorasSol,HorasMaxSol,Temporada
-AmapolaRoja,Oriental,5,5,Primavera
-AmapolaBlanca,Oriental,3,5,Verano
-AmapolaAzul,Oriental,6,5,Invierno
+Nombre,Tipo,HorasSol,HorasMaxSol,Temporada,FechaRiego
+AmapolaRoja,Oriental,0,5,Primavera,19/01/24
+AmapolaBlanca,Oriental,0,5,Verano,19/01/24
+AmapolaAzul,Oriental,0,5,Invierno,19/01/24

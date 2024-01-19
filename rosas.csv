@@ -1,5 +1,5 @@
-Nombre,Tipo,HorasSol,HorasMaxSol,Color
-RosaRoja,Canina,0,5,Roja
-RosaBlanca,Canina,0,5,Blanca
-RosaAmarilla,Canina,0,5,Amarilla
-RosaRosa,canina,4,5,rosa
+Nombre,Tipo,HorasSol,HorasMaxSol,Color,FechaRiego
+RosaRoja,Canina,1,5,Roja,19/01/24
+RosaBlanca,Canina,1,5,Blanca,19/01/24
+RosaAmarilla,Canina,1,5,Amarilla,19/01/24
+RosaRosa,canina,0,5,rosa,19/01/24

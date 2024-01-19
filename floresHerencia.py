@@ -9,7 +9,7 @@ class Flor(ABC):
         self.tipo = tipo
         self.horasSol = horasSol
         self.horasMaxSol = horasMaxSol
-        self.fechaRiego = datetime.now()
+        self.fechaRiego = datetime.now().strftime('%d/%m/%y')
 
     @abstractmethod
     def darComida(self):
@@ -27,7 +27,7 @@ class Flor(ABC):
         self.horasSol += horas
         if self.horasSol >= self.horasMaxSol:
             print("La planta necesita agua, se procede a regar")
-            self.fechaRiego = datetime.now()
+            self.fechaRiego = datetime.now().strftime('%d/%m/%y')
             self.horasSol = 0
             print(f'Actualizada fecha riego a {self.fechaRiego} y las horas al sol a {self.horasSol}')
 
@@ -51,21 +51,7 @@ class Amapola(Flor):
         print(f"Amapola de temporada {self.temporada} ha comido")
     
     def cambiarTierra(self):
-        return self.horasSol > 2
-    
-    def is_en_temporada(self):
-        fecha_actual = datetime.now()
-        return fecha_actual < datetime.strptime(self.temporada, "%Y-%m-%d")
-    
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.is_en_temporada():
-            return f"Amapola {self.nombre} está en temporada."
-        else:
-            raise StopIteration(f"Amapola {self.nombre} no está en temporada.")
-
+        return self.horasSol > 2 
 
 
 # Crear instancias de las subclases

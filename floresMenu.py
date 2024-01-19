@@ -41,7 +41,7 @@ class FlorManager:
     def guardar_rosas(self, changes=False):
         try:
             with open(self.csv_rosas, 'w', newline='') as archivo:
-                campos = ["Nombre", "Tipo", "HorasSol", "HorasMaxSol", "Color"]
+                campos = ["Nombre", "Tipo", "HorasSol", "HorasMaxSol", "Color", "FechaRiego"]
                 escritor_csv = csv.DictWriter(archivo, fieldnames=campos)
 
                 escritor_csv.writeheader()
@@ -51,7 +51,8 @@ class FlorManager:
                         "Tipo": rosa.tipo,
                         "HorasSol": rosa.horasSol,
                         "HorasMaxSol": rosa.horasMaxSol,
-                        "Color": rosa.color 
+                        "Color": rosa.color,
+                        "FechaRiego": rosa.fechaRiego 
                     })
             print(f"Se han guardado los datos en '{self.csv_rosas}'.")
         except Exception as e:
@@ -60,7 +61,7 @@ class FlorManager:
     def guardar_amapolas(self):
         try:
             with open(self.csv_amapolas, 'w', newline='') as archivo:
-                campos = ["Nombre", "Tipo", "HorasSol", "HorasMaxSol", "Temporada"]
+                campos = ["Nombre", "Tipo", "HorasSol", "HorasMaxSol", "Temporada", "FechaRiego"]
                 escritor_csv = csv.DictWriter(archivo, fieldnames=campos)
 
                 escritor_csv.writeheader()
@@ -70,7 +71,8 @@ class FlorManager:
                         "Tipo": amapola.tipo,
                         "HorasSol": amapola.horasSol,
                         "HorasMaxSol": amapola.horasMaxSol,
-                        "Temporada": amapola.temporada
+                        "Temporada": amapola.temporada,
+                        "FechaRiego": amapola.fechaRiego
                     })
             print(f"Se han guardado los datos en '{self.csv_amapolas}'.")
         except Exception as e:
@@ -161,7 +163,7 @@ class FlorManager:
                     self.mostrar_amapolas()
             elif opcion == "2":
                 opcion = input("Selecciona 1. Rosas o 2. Amapolas: ")
-                horas = input("¿Cuántas horas quieres ponerlas al sol?")
+                horas = input("¿Cuántas horas quieres ponerlas al sol? ")
                 self.actualizarHorasSol(int(horas), opcion)
             elif opcion == "3":
                 self.actualizarBD()
