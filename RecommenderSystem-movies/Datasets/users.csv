@@ -1,0 +1,6 @@
+userId,favoriteFilm,age,languageFav,oficialLanguage,genresFavs
+isabelnb,Toy Story,25,Italian,Spanish,"['Comedy', 'Horror']"
+inb,The Godfather,35,English,English,"['Drama', 'Crime']"
+maria,The Shawshank Redemption,28,English,English,"['Drama']"
+ana,Inception,30,French,English,"['Action', 'Sci-Fi', 'Thriller']"
+jose,La La Land,22,Spanish,English,"['Drama', 'Romance', 'Musical']"

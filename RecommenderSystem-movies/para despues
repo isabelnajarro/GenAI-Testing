@@ -1,0 +1,50 @@
+# Ejemplo de uso: Obtener el sentimiento de una descripción de película
+overview = "Una película emocionante llena de acción y aventura."
+sentiment = get_sentiment(overview)
+
+# Integrar el sentimiento del usuario con el sistema de recomendación
+if sentiment == 'positive':
+    # Obtener recomendaciones de películas para usuarios con sentimiento positivo
+    recommendations = get_recommendations_for_positive_user('User Preferences')
+else:
+    # Obtener recomendaciones de películas para usuarios con sentimiento negativo o neutral
+    recommendations = get_recommendations_for_negative_user('User Preferences')
+
+print("Recomendaciones de películas basadas en el sentimiento del usuario:")
+print(recommendations)
+
+# Ejemplo de uso: Obtener recomendaciones para una película específica
+recommendations = get_recommendations('Your Movie Title')
+print(recommendations)
+-------------------------------------------
+# Ejemplo de uso: Obtener recomendaciones para un usuario con sentimiento positivo
+user_preferences = ['Action', 'Adventure', 'Comedy']  # Géneros favoritos del usuario
+recommendations_positive = get_recommendations_for_positive_user(user_preferences)
+print("Recomendaciones para un usuario con sentimiento positivo:")
+print(recommendations_positive)
+-------------------------------------------
+Ahora mismo tenemos:
+- Pandas/numpy: para preprocesar los datos
+- Transformer: se aplica para conseguir los generos de las peliculas que no tienen asignados a partir de su overview
+- NLTK: para obtener la emocion del usuario
+- Spacy: para encontrar la pelicula de la que habla el usuario
+
+Ideas:
+- User profiles and filter by their data
+- Add reviews calling imdb example of the teacher 
+- Add langchain to get simmilarities with the list of seen films (user part)
+    # Crear un vectorizador TF-IDF
+    tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+    # Entrenar el vectorizador
+    tfidf_matrix = tfidf_vectorizer.fit_transform(movies_df['seenFilms'])
+    # Inicializar LangChain con la matriz TF-IDF
+    langchain = LangChain(tfidf_matrix)
+    # Función para obtener recomendaciones
+    def get_recommendations(movie_title, num_recommendations=5):
+        # Encontrar el índice del título de la película
+        movie_index = movies_df[movies_df['title'] == movie_title].index[0]
+        # Obtener las similitudes de la película con otras películas
+        similar_movies = langchain.get_similar_items(movie_index, num_recommendations)
+        # Obtener los títulos de las películas similares
+        recommended_movies = movies_df.iloc[similar_movies]['title']
+        return recommended_movies
